@@ -18,6 +18,16 @@ class Progresshud {
     return await _channel.invokeMethod('showWithStatus', status);
   }
 
+
+  static Future<String> showProgress(double progress) async {
+    return await _channel.invokeMethod('showProgress', progress);
+  }
+
+  static Future<String> showProgressWithStatus(double progress, String status) async {
+    return await _channel.invokeMethod('showProgressWithStatus', {'progress': progress, 'status': status});
+  }
+
+
   static Future<String> showInfoWithStatus(String status) async {
     return await _channel.invokeMethod('showInfoWithStatus', status);
   }

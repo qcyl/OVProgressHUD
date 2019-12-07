@@ -21,10 +21,15 @@
       [SVProgressHUD show];
     result(@"success");
   }
-//  else if ([@"showProgress" isEqualToString:call.method]) {
-//      [SVProgressHUD showProgress:call.arguments];
-//      result(@"success");
-//  }
+ else if ([@"showProgress" isEqualToString:call.method]) {
+     [SVProgressHUD showProgress:call.arguments];
+     result(@"success");
+ }
+  else if ([@"showProgressWithStatus" isEqualToString:call.method]) {
+      NSDictionary *dict = call.arguments;
+      [SVProgressHUD showProgress:dict[@"progress"] status:dict[@"status"]];
+      result(@"success");
+  }
     /// show status
   else if ([@"showWithStatus" isEqualToString:call.method]) {
       [SVProgressHUD showWithStatus:call.arguments];
