@@ -34,12 +34,16 @@ class ProgresshudPlugin: MethodCallHandler {
             dialog.showWithStatus(call.arguments.toString(), maskType)
             result.success("success")
         } else if (call.method == "showProgress") {
+            val progress = ((call.arguments as Double) * 100).toInt();
             dialog.getProgressBar().setProgress(progress);
-            dialog.showWithProgress(call.arguments.toString(), maskType)
+            dialog.showWithProgress("", maskType)
             result.success("success")
         } else if (call.method == "showProgressWithStatus") {
+            val dict = (call.arguments as Map<String, Objects>);
+            val progress = ((dict["progress"] as Double) * 100).toInt();
+            val status = dict["status"].toString();
             dialog.getProgressBar().setProgress(progress);
-            dialog.showWithProgress(call.arguments.toString(), maskType)
+            dialog.showWithProgress(status, maskType)
             result.success("success")
         } else if (call.method == "showInfoWithStatus") {
             dialog.showInfoWithStatus(call.arguments.toString(), maskType)
