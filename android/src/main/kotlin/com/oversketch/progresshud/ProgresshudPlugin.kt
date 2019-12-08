@@ -33,6 +33,14 @@ class ProgresshudPlugin: MethodCallHandler {
         } else if (call.method == "showWithStatus") {
             dialog.showWithStatus(call.arguments.toString(), maskType)
             result.success("success")
+        } else if (call.method == "showProgress") {
+            dialog.getProgressBar().setProgress(progress);
+            dialog.showWithProgress(call.arguments.toString(), maskType)
+            result.success("success")
+        } else if (call.method == "showProgressWithStatus") {
+            dialog.getProgressBar().setProgress(progress);
+            dialog.showWithProgress(call.arguments.toString(), maskType)
+            result.success("success")
         } else if (call.method == "showInfoWithStatus") {
             dialog.showInfoWithStatus(call.arguments.toString(), maskType)
             result.success("success")

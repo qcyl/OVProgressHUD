@@ -22,12 +22,14 @@
     result(@"success");
   }
  else if ([@"showProgress" isEqualToString:call.method]) {
-     [SVProgressHUD showProgress:call.arguments];
+     NSNumber *number = call.arguments;
+     [SVProgressHUD showProgress:number.floatValue];
      result(@"success");
  }
   else if ([@"showProgressWithStatus" isEqualToString:call.method]) {
       NSDictionary *dict = call.arguments;
-      [SVProgressHUD showProgress:dict[@"progress"] status:dict[@"status"]];
+      NSNumber *number = dict[@"progress"];
+      [SVProgressHUD showProgress:number.floatValue status:dict[@"status"]];
       result(@"success");
   }
     /// show status
